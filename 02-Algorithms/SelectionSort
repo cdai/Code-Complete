@@ -1,0 +1,32 @@
+import java.util.*;
+
+class Main {
+  public static void main(String[] args) {
+    int[] nums = { 3, 1, 0, 5 };
+    sort(nums);
+    System.out.println(Arrays.toString(nums));
+  }
+
+  // Selection sort:
+  // sort(A[0:n-1])
+  //  for i = 0 to n-1:
+  //    min = index of min value in A[i:n-1]
+  //    swap A[i] and A[min]
+  //
+  // invariant A[0:i) is sorted with min i-1 numbers
+  private static void sort(int[] nums) {
+    for (int i = 0; i < nums.length; i++) {
+      
+      int min = i;
+      for (int j = min + 1; j < nums.length; j++) {
+        if (nums[j] < nums[min]) {
+          min = j;
+        }
+      }
+
+      int tmp = nums[i];
+      nums[i] = nums[min];
+      nums[min] = tmp;
+    }
+  } 
+}
